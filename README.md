@@ -1,4 +1,4 @@
-# Hi, 
+# Hi
 
 Welcome to my repo where i post the code i did (or i'm currently working on) to learn DRL.
 
@@ -12,7 +12,7 @@ First, make sure you are on linux (it's so hard to find some packages on windows
 
 Then, executes theses commands in your terminal (you can find them [here](https://huggingface.co/learn/deep-rl-course/unit1/hands-on#install-dependencies-and-create-a-virtual-screen-) too):
 ```
-# if you don't have pyhton installed (the commands are made for debian-based distros, unsing APT):
+# if you don't have python installed (the commands are made for debian-based distros, using APT):
 sudo apt install python3 python3-full python3-venv
 
 # then install some packages :
