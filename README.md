@@ -24,7 +24,7 @@ python3 -m venv .venv
 # install python dependencies:
 pip install -r https://raw.githubusercontent.com/huggingface/deep-rl-class/main/notebooks/unit1/requirements-unit1.txt
 
-# (optional) and if you want th follow the course, you'll need theses:
+# (optional) and if you want to follow the course, you'll need theses:
 apt install python3-opengl
 apt install ffmpeg
 apt install xvfb
