@@ -8,24 +8,26 @@ import tqdm
 import pickle
 from tqdm import tqdm
 
-env = gym.make("FrozenLake-v1", desc=None, map_name="4x4", is_slippery=False, render_mode="rgb_array")
+env = gym.make("Taxi-v3", render_mode="rgb_array")
 
-def get_infos(env):
-    print("Observation Space : ", env.observation_space)
+def infos(env):
+    print("N° possible states : ", env.observation_space)
+    print("N° possible actions : ",env.action_space)
+
+    print("\nObservation Space : ", env.observation_space)
     print("Sample observation : ", env.observation_space.sample())  # Get a random observation
 
     print("\nAction Space : ", env.action_space)
     print("Action Sample : ", env.action_space.sample())  # Take a random action
 
-state_score = env.observation_space.n
-action_score = env.action_space.n
+state_space = env.observation_space.n
+action_space = env.action_space.n
 
-#* Initialize Q-table with zeros
-def intialize_q_table(state_score, action_score):
+#* some usefull functions
+
+def initialize_q_table(state_score, action_score):
     Q = np.zeros((state_score, action_score))
     return Q
-
-Qtable_frozenlake = intialize_q_table(state_score, action_score)
 
 def greedy_policy(Qtable, state):
     action = np.argmax(Qtable[state][:])
@@ -37,26 +39,6 @@ def epsilon_greedy_policy(Qtable, state, epsilon):
     else:
         action = env.action_space.sample()  # Exploration
     return action
-
-#* Define hyperparameters
-# Trainning parameters
-n_training_episodes = 10000
-learning_rate = 0.7
-
-# Evaluation parameters
-n_eval_episodes = 100
-
-# Environment parameters
-env_name = "FrozenLake-v1"
-max_steps = 99  # Max steps per episode
-gamma = 0.95  # Discounting rate
-eval_seed = []
-env_id = "q-FrozenLake-v1"
-
-# Exploration parameters
-max_epsilon = 1.0
-min_epsilon = 0.05
-decay_rate = 0.0005
 
 #* Training loop
 def train(n_training_episodes, min_epsilon, max_epsilon, decay_rate, env, max_steps, Qtable):
@@ -85,8 +67,135 @@ def train(n_training_episodes, min_epsilon, max_epsilon, decay_rate, env, max_st
 
     return Qtable
 
-Qtable_frozenlake = train(n_training_episodes, min_epsilon, max_epsilon, decay_rate, env, max_steps, Qtable_frozenlake)
+Qtable_taxi = initialize_q_table(state_space, action_space)
+print(Qtable_taxi)
+print("Q-table shape: ", Qtable_taxi.shape)
 
+#* Define hyperparameters
+
+# Training parameters
+n_training_episodes = 1000000  # Total training episodes
+learning_rate = 0.05  # Learning rate
+
+# Evaluation parameters
+n_eval_episodes = 100  # Total number of test episodes
+
+# DO NOT MODIFY EVAL_SEED
+eval_seed = [
+    16,
+    54,
+    165,
+    177,
+    191,
+    191,
+    120,
+    80,
+    149,
+    178,
+    48,
+    38,
+    6,
+    125,
+    174,
+    73,
+    50,
+    172,
+    100,
+    148,
+    146,
+    6,
+    25,
+    40,
+    68,
+    148,
+    49,
+    167,
+    9,
+    97,
+    164,
+    176,
+    61,
+    7,
+    54,
+    55,
+    161,
+    131,
+    184,
+    51,
+    170,
+    12,
+    120,
+    113,
+    95,
+    126,
+    51,
+    98,
+    36,
+    135,
+    54,
+    82,
+    45,
+    95,
+    89,
+    59,
+    95,
+    124,
+    9,
+    113,
+    58,
+    85,
+    51,
+    134,
+    121,
+    169,
+    105,
+    21,
+    30,
+    11,
+    50,
+    65,
+    12,
+    43,
+    82,
+    145,
+    152,
+    97,
+    106,
+    55,
+    31,
+    85,
+    38,
+    112,
+    102,
+    168,
+    123,
+    97,
+    21,
+    83,
+    158,
+    26,
+    80,
+    63,
+    5,
+    81,
+    32,
+    11,
+    28,
+    148,
+]  # Evaluation seed, this ensures that all classmates agents are trained on the same taxi starting position
+# Each seed has a specific starting state
+
+# Environment parameters
+env_id = "Taxi-v3"  # Name of the environment
+max_steps = 99  # Max steps per episode
+gamma = 0.95  # Discounting rate
+
+# Exploration parameters
+max_epsilon = 1.0  # Exploration probability at start
+min_epsilon = 0.05  # Minimum exploration probability
+decay_rate = 0.005  # Exponential decay rate for exploration prob
+
+Qtable_taxi = train(n_training_episodes, min_epsilon, max_epsilon, decay_rate, env, max_steps, Qtable_taxi)
 
 #* Eval the agent
 def evaluate_agent(env, max_steps, n_eval_episodes, Q, seed):
@@ -124,7 +233,7 @@ def evaluate_agent(env, max_steps, n_eval_episodes, Q, seed):
     return mean_reward, std_reward
 
 
-mean_reward, std_reward = evaluate_agent(env, max_steps, n_eval_episodes, Qtable_frozenlake, eval_seed)
+mean_reward, std_reward = evaluate_agent(env, max_steps, n_eval_episodes, Qtable_taxi, eval_seed)
 print(f"Mean_reward={mean_reward:.2f} +/- {std_reward:.2f}")
 
 #* Push to the hub
@@ -284,7 +393,7 @@ def push_to_hub(repo_id, model, env, video_fps=1, local_repo_path="hub"):
     print("Your model is pushed to the Hub. You can view your model here: ", repo_url)
 
 model = {
-    "env_id": "q-FrozenLake-v1",
+    "env_id": env_id,
     "max_steps": max_steps,
     "n_training_episodes": n_training_episodes,
     "n_eval_episodes": n_eval_episodes,
@@ -294,7 +403,7 @@ model = {
     "max_epsilon": max_epsilon,
     "min_epsilon": min_epsilon,
     "decay_rate": decay_rate,
-    "qtable": Qtable_frozenlake,
+    "qtable": Qtable_taxi,
 }
 
-push_to_hub(repo_id="OxoGhost/q-FrozenLake-v1", model=model, env=env)
+push_to_hub(repo_id="OxoGhost/q-taxi-v3", model=model, env=env)
