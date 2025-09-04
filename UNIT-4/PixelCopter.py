@@ -164,7 +164,7 @@ def reinforce(policy, optimizer, n_training_episodes, max_t, gamma, print_every)
 # Training parameters
 pixelcopter_hyperparameters = {
     "h_size": 64,
-    "n_training_episodes": 50000,
+    "n_training_episodes": 25000,
     "n_evaluation_episodes": 100,
     "max_t": 10000,
     "gamma": 0.99,
