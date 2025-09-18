@@ -62,7 +62,7 @@ class Policy(nn.Module):
         return action.item(), m.log_prob(action)
     
 
-def save_model(model, optimizer, filepath="pixelcopter_checkpoint.pth"):
+def save_model(model, optimizer, filepath="UNIT-4/pixelcopter_checkpoint.pth"):
     torch.save({
         "model_state_dict": model.state_dict(),
         "optimizer_state_dict": optimizer.state_dict(),
@@ -70,7 +70,7 @@ def save_model(model, optimizer, filepath="pixelcopter_checkpoint.pth"):
     print(f"Model saved to {filepath}")
 
 
-def load_model(model, optimizer, filepath="pixelcopter_checkpoint.pth"):
+def load_model(model, optimizer, filepath="UNIT-4/pixelcopter_checkpoint.pth"):
     if os.path.exists(filepath):
         checkpoint = torch.load(filepath, map_location=device)
         model.load_state_dict(checkpoint["model_state_dict"])
