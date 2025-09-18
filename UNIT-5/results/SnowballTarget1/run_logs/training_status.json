@@ -1,0 +1,83 @@
+{
+    "SnowballTarget": {
+        "checkpoints": [
+            {
+                "steps": 2112,
+                "file_path": "results/SnowballTarget1/SnowballTarget/SnowballTarget-2112.onnx",
+                "reward": null,
+                "creation_time": 1758201739.1895335,
+                "auxillary_file_paths": [
+                    "results/SnowballTarget1/SnowballTarget/SnowballTarget-2112.pt"
+                ]
+            },
+            {
+                "steps": 4224,
+                "file_path": "results/SnowballTarget1/SnowballTarget/SnowballTarget-4224.onnx",
+                "reward": null,
+                "creation_time": 1758205048.6123786,
+                "auxillary_file_paths": [
+                    "results/SnowballTarget1/SnowballTarget/SnowballTarget-4224.pt"
+                ]
+            },
+            {
+                "steps": 49952,
+                "file_path": "results/SnowballTarget1/SnowballTarget/SnowballTarget-49952.onnx",
+                "reward": 10.454545454545455,
+                "creation_time": 1758205298.3413205,
+                "auxillary_file_paths": [
+                    "results/SnowballTarget1/SnowballTarget/SnowballTarget-49952.pt"
+                ]
+            },
+            {
+                "steps": 99976,
+                "file_path": "results/SnowballTarget1/SnowballTarget/SnowballTarget-99976.onnx",
+                "reward": 17.545454545454547,
+                "creation_time": 1758205348.040765,
+                "auxillary_file_paths": [
+                    "results/SnowballTarget1/SnowballTarget/SnowballTarget-99976.pt"
+                ]
+            },
+            {
+                "steps": 149936,
+                "file_path": "results/SnowballTarget1/SnowballTarget/SnowballTarget-149936.onnx",
+                "reward": 22.636363636363637,
+                "creation_time": 1758205397.9592361,
+                "auxillary_file_paths": [
+                    "results/SnowballTarget1/SnowballTarget/SnowballTarget-149936.pt"
+                ]
+            },
+            {
+                "steps": 199992,
+                "file_path": "results/SnowballTarget1/SnowballTarget/SnowballTarget-199992.onnx",
+                "reward": 25.285714285714285,
+                "creation_time": 1758205448.3400044,
+                "auxillary_file_paths": [
+                    "results/SnowballTarget1/SnowballTarget/SnowballTarget-199992.pt"
+                ]
+            },
+            {
+                "steps": 200600,
+                "file_path": "results/SnowballTarget1/SnowballTarget/SnowballTarget-200600.onnx",
+                "reward": 24.545454545454547,
+                "creation_time": 1758205448.4371161,
+                "auxillary_file_paths": [
+                    "results/SnowballTarget1/SnowballTarget/SnowballTarget-200600.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 200600,
+            "file_path": "results/SnowballTarget1/SnowballTarget.onnx",
+            "reward": 24.545454545454547,
+            "creation_time": 1758205448.4371161,
+            "auxillary_file_paths": [
+                "results/SnowballTarget1/SnowballTarget/SnowballTarget-200600.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.2.0.dev0",
+        "torch_version": "2.8.0+cu128"
+    }
+}

@@ -1,0 +1,47 @@
+{
+    "Pyramids": {
+        "checkpoints": [
+            {
+                "steps": 499886,
+                "file_path": "results/Pyramids Training/Pyramids/Pyramids-499886.onnx",
+                "reward": -0.9992000460624695,
+                "creation_time": 1758207220.241885,
+                "auxillary_file_paths": [
+                    "results/Pyramids Training/Pyramids/Pyramids-499886.pt"
+                ]
+            },
+            {
+                "steps": 999885,
+                "file_path": "results/Pyramids Training/Pyramids/Pyramids-999885.onnx",
+                "reward": null,
+                "creation_time": 1758207680.009746,
+                "auxillary_file_paths": [
+                    "results/Pyramids Training/Pyramids/Pyramids-999885.pt"
+                ]
+            },
+            {
+                "steps": 1000013,
+                "file_path": "results/Pyramids Training/Pyramids/Pyramids-1000013.onnx",
+                "reward": null,
+                "creation_time": 1758207680.0606375,
+                "auxillary_file_paths": [
+                    "results/Pyramids Training/Pyramids/Pyramids-1000013.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 1000013,
+            "file_path": "results/Pyramids Training/Pyramids.onnx",
+            "reward": null,
+            "creation_time": 1758207680.0606375,
+            "auxillary_file_paths": [
+                "results/Pyramids Training/Pyramids/Pyramids-1000013.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "1.2.0.dev0",
+        "torch_version": "2.8.0+cu128"
+    }
+}
