@@ -7,3 +7,5 @@ For that i use [this course](https://huggingface.co/learn/deep-rl-course/unit0/i
 Fell free to explore, ask something, take the files or use it for something else, as long as you mention me.
 
 Have fun !
+
+PS : python 3.10.12 is (for now) the best python versino to follow the course and to do some DRL
